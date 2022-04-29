@@ -4,11 +4,10 @@ import 'package:fl_chart/fl_chart.dart';
 class DashboardOnePage extends StatelessWidget {
   //static final String path = "lib/src/pages/dashboard/dash1.dart";
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).buttonColor,
+      backgroundColor: Colors.white,
       appBar: _buildAppBar(context),
       body: _buildBody(context),
     );
@@ -21,12 +20,11 @@ class DashboardOnePage extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: _buildTitledContainer("Placements",
+            child: _buildTitledContainer("Overall Statistics",
                 child: Container(
                     height: 450, child: DonutPieChart.withSampleData())),
           ),
         ),
-
       ],
     );
   }
@@ -56,7 +54,7 @@ class DashboardOnePage extends StatelessWidget {
                   style: stats,
                 ),
                 const SizedBox(height: 5.0),
-                Text("Leads".toUpperCase())
+                Text("Companies".toUpperCase())
               ],
             ),
           ),
@@ -70,11 +68,11 @@ class DashboardOnePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "+300",
+                  "+1300",
                   style: stats,
                 ),
                 const SizedBox(height: 5.0),
-                Text("Customers".toUpperCase())
+                Text("Offers".toUpperCase())
               ],
             ),
           ),
@@ -88,25 +86,22 @@ class DashboardOnePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "+1200",
+                  "7.5 LPA",
                   style: stats,
                 ),
                 const SizedBox(height: 5.0),
-                Text("Orders".toUpperCase())
+                Text("Avg. Package".toUpperCase())
               ],
             ),
           ),
         ],
       ),
     );
-
   }
-
-
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(color:Colors.black),
+      iconTheme: IconThemeData(color: Colors.black),
       titleSpacing: 0.0,
       elevation: 0,
       backgroundColor: Colors.transparent,
@@ -125,7 +120,10 @@ class DashboardOnePage extends StatelessWidget {
       padding: EdgeInsets.all(0),
       icon: CircleAvatar(
         backgroundColor: Colors.grey.shade300,
-        child: CircleAvatar(radius: 16, backgroundImage: NetworkImage('https://images.unsplash.com/photo-1651056469394-28dc18171c6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')),
+        child: CircleAvatar(
+            radius: 16,
+            backgroundImage: NetworkImage(
+                'https://images.unsplash.com/photo-1651056469394-28dc18171c6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60')),
       ),
       onPressed: () {},
     );
@@ -146,7 +144,7 @@ class DashboardOnePage extends StatelessWidget {
         children: <Widget>[
           Text(
             title,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0),
           ),
           if (child != null) ...[const SizedBox(height: 10.0), child]
         ],
@@ -162,7 +160,7 @@ class DonutPieChart extends StatelessWidget {
 
   /// Creates a [PieChart] with sample data and no transition.
   factory DonutPieChart.withSampleData() {
-    return new DonutPieChart(
+    return DonutPieChart(
       _createSampleData(),
     );
   }
@@ -184,55 +182,50 @@ class DonutPieChart extends StatelessWidget {
     final data = [
       PieChartSectionData(
         value: 100,
-        title: "Overall Placement",
+        title: "6.5 LPA",
         color: Colors.red.shade400,
         titleStyle: TextStyle(
-          fontSize: 20,
+          fontSize: 16,
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          letterSpacing: 2
         ),
-        titlePositionPercentageOffset: 1,
+        titlePositionPercentageOffset: 1.5,
       ),
       PieChartSectionData(
-        title: "August",
+        title: "9 LPA ",
         value: 75,
         color: Colors.blue.shade400,
         titleStyle: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2
+          fontSize: 16,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
-        titlePositionPercentageOffset: 1,
+        titlePositionPercentageOffset: 1.7,
       ),
       PieChartSectionData(
-        title: "September",
+        title: "20+ LPA",
         value: 25,
         color: Colors.green.shade400,
         titleStyle: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2
+          fontSize: 16,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
-        titlePositionPercentageOffset: 1,
+        titlePositionPercentageOffset: 1.5,
       ),
       PieChartSectionData(
-        title: "Placements >9LPA",
+        title: "3 - 6 LPA ",
         value: 60,
         color: Colors.purple.shade400,
         titleStyle: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1
+          fontSize: 16,
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         ),
-        titlePositionPercentageOffset: 1,
+        titlePositionPercentageOffset: 1.8,
       ),
     ];
 
     return data;
   }
 }
-
