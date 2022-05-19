@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:minor_project/DepartmentScreen.dart';
+import 'package:minor_project/LoginFaculty.dart';
 import 'package:minor_project/placements.dart';
 
 class Firstpage extends StatelessWidget {
@@ -28,20 +29,22 @@ class Firstpage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 18),
                 )),
-            ListTile(
+           /* ListTile(
               title: const Text(
                 'Login as HOD',
               ),
               onTap: () {
                 Navigator.pop(context);
               },
-            ),
+            ),*/
             ListTile(
               title: const Text(
                 'Login as Faculty',
               ),
               onTap: () {
-                Navigator.pop(context);
+                //Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
           ],

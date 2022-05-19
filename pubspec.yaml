@@ -40,6 +40,10 @@ dependencies:
   timelines: ^0.1.0
   fl_chart: any
   font_awesome_flutter: any
+  firebase_auth: any
+  firebase_core: any
+  cloud_firestore: any
+
 
 dev_dependencies:
   flutter_test:
