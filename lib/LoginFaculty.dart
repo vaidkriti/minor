@@ -13,21 +13,19 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  late final FirebaseAuth _firebaseAuth;
+   final FirebaseAuth auth = FirebaseAuth.instance;
 
 
 
-  Future<UserCredential> signUp(email, password) async {
-    try {
-      UserCredential user = await  _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-
-
-      return user;
-    } catch (e) {
-
-      throw e;
+  Future<User> handleSignInEmail(String email, String password) async {
+    UserCredential result =
+        await auth.signInWithEmailAndPassword(email: email, password: password);
+    final User user = result.user!;
+    
+    if(user !=null) {
+      Navigator.push
     }
+    return user;
   }
 
   TextEditingController username = TextEditingController();
@@ -100,14 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.centerRight,
               margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               child: RaisedButton(
-                onPressed: () async{
+                onPressed: () {
 
-                  print("H");
-                  UserCredential user = await  _firebaseAuth.createUserWithEmailAndPassword(
-                      email: username.text, password: password.text);
-
-
-                  print(user);
+                  
                 },
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
                 textColor: Colors.white,
