@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:minor_project/background.dart';
+import 'package:minor_project/Firstscreen.dart';
 
 
 
@@ -23,7 +24,11 @@ class _LoginScreenState extends State<LoginScreen> {
     final User user = result.user!;
     
     if(user !=null) {
-      Navigator.push
+       Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Firstpage()));
+    }
+    else {
+      print('Invalid Credentials');
     }
     return user;
   }
@@ -99,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
               margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               child: RaisedButton(
                 onPressed: () {
-
+handleSignInEmail(username.text,password.text);
                   
                 },
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
